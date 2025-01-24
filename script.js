@@ -17,31 +17,34 @@ themeToggle.addEventListener('click', () => {
 
 // Form Submission
 document.querySelector('.submit-button').addEventListener('click',() => {
-    if (!document.querySelector('.nom').value || !document.querySelector('.prenom').value
-     || !document.querySelector('.email').value || !document.querySelector('.ville').value || 
-      !document.querySelector('.numero').value
+    if (!document.querySelector('.nom').value || !document.querySelector('.age').value
+     || !document.querySelector('.niveau').value|| !document.querySelector('.passport').value || 
+      ! document.querySelector('.numero').value  || !document.querySelector('.filiere').value
 ) {
         alert('Veuillez remplir tous les champs du formulaire.');
         return;
     }
     try {
-        const response = fetch('https://rabiebackend.onrender.com/article', {
+        const response = fetch('https://chinavipbackend.onrender.com/articles', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-             StudentLastName: document.querySelector('.nom').value,
-             StudentFirstName:  document.querySelector('.prenom').value,
+             Name: document.querySelector('.nom').value,
+             Note: document.querySelector('.Note').value,
+             Passport:  document.querySelector('.passport').value,
+             Age:  document.querySelector('.age').value,
              Niveau:  document.querySelector('.niveau').value,
-             Email: document.querySelector('.email').value,
+             filiere: document.querySelector('.filiere').value,
              Numero:  document.querySelector('.numero').value,
-             Ville: document.querySelector('.ville').value,
+            
+             
         }),
       });
   
       alert('Votre inscription est confirmée!');
-      location.reload();
+      
     } catch (error) {
       console.error('Error:', error);
       alert('Une erreur est survenue. Veuillez réessayer.');
